@@ -1,0 +1,20 @@
+version: '2.2'
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: mysql-server
+    ports:
+    - "3306:3306"
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: Test.1234
+      MYSQL_DATABASE: laravelmyblogger
+      MYSQL_USER: laravelmyblogger
+      MYSQL_PASSWORD: Test.1234
+volumes:
+  db_data:
+
+
