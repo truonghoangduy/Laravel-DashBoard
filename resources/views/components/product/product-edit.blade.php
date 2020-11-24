@@ -2,6 +2,7 @@
     <div class="card">
         <form method="POST" enctype='multipart/form-data' action="{{route("products.update",['product'=>$productDetail->id])}}">
             @csrf
+            @method('put')
             <div class="card-header">
                 <div class="row align-items-center">
                     <div class="col-9">

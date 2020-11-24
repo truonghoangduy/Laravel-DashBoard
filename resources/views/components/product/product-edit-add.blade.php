@@ -20,7 +20,7 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label class="form-control-label" for="input-username">{{$productDetail['name']}}</label>
+                                <label class="form-control-label" for="input-username"></label>
                                 <input type="text" name="name" id="input-username" class="form-control" placeholder="Username" value="lucky.jesse">
                             </div>
                         </div>
@@ -35,7 +35,7 @@
                         <div class="col-lg-6">
                             <label class="form-control-label" for="input-product-price">Price</label>
                             <div class="input-group">
-                                <input type="text" name="price" value='{{$productDetail['price']}}' class="form-control" aria-label="Dollar amount (with dot and two decimal places)">
+                                <input type="text" name="price" class="form-control" aria-label="Dollar amount (with dot and two decimal places)">
                                 <div class="input-group-append">
                                     <span class="input-group-text">$</span>
                                     <span class="input-group-text">0.00</span>
@@ -50,7 +50,7 @@
                 <div class="pl-lg-4">
                     <div class="form-group">
                         <label class="form-control-label">Description,</label>
-                        <textarea name="description" rows="4" class="form-control" placeholder="A few words about you ...">{{$productDetail['description']}}</textarea>
+                        <textarea name="description" rows="4" class="form-control" placeholder="A few words about you ..." data-value="A few words about you ..."></textarea>
                     </div>
                 </div>
                 <hr class="my-4" />

@@ -65,7 +65,11 @@
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                         <a class="dropdown-item" href="{{route('products.update',['product'=>$product['id']])}}">Edit</a>
-                                        <a class="dropdown-item" href="#">Delete</a>
+                                        <form method="POST" action="{{route('products.destroy',['product'=>$product['id']])}}">
+                                            @csrf
+                                            @method('delete')
+                                            <button class="dropdown-item" type="submit">Delete</button>
+                                        </form>
                                     </div>
                                 </div>
                             </td>

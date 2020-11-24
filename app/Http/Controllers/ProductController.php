@@ -102,17 +102,32 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $productUpdatedInfo = $request->all(['name','description','price','pictureURL']);
+        DB::table('products')->where('id','=',$id)->update($productUpdatedInfo);
+        return redirect()->route('products.index')->with("result",true);
+//
+//                $product = new Product()-;
+//
+//                $insertReuslt =  $product->save();
+//                    $product->name = $request->name();
+//                    $product->description = $request->description();
+//                    $product->save();
+//                return redirect()->route('products.index')->with("result",$insertReuslt);
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+//    /**
+//     * Remove the specified resource from storage.
+//     *
+//     * @param  int  $id
+//     * @return \Illuminate\Http\Response
+//     */
     public function destroy($id)
     {
-        //
+        $product = DB::table('products')->where('id','=',$id);
+        if ($product){
+            $product->delete();
+            return redirect()->route('products.index');
+        }
     }
 }
