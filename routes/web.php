@@ -26,5 +26,11 @@ Route::get('/test',function (){
 
 Route::resource('products',ProductController::class);
 
+Route::resource('users',\App\Http\Controllers\UserController::class);
 
+Route::resource('carts',\App\Http\Controllers\CartController::class);
+
+//Route::get('users',function (){
+//    return view()
+//});
 //php artisan migrate:fresh --seed
