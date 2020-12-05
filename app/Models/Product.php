@@ -12,4 +12,8 @@ class Product extends Model
     protected $table = 'products';
     public $timestamps = false;
     protected $fillable = ['id','name','description','price','pictureURL'];
+
+    public function product_carts(){
+        return $this->hasMany("App\Models\Product_Cart");
+    }
 }
