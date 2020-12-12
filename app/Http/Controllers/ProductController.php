@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\URL;
+use MongoDB\Driver\Query;
 use phpDocumentor\Reflection\Types\Nullable;
 
 class ProductController extends Controller
@@ -17,12 +18,26 @@ class ProductController extends Controller
      *
 //     * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
 //        $products = DB::table('products')->get()->toArray();
-        $products = Product::all()->toArray();
+//        $products = Product::all()->toArray();
+
+        $listOfProduct = Product::query();
+
+        if ($request->has("keyword")){
+            $listOfProduct->where("name","like",("%".$request->get("keyword")."%"));
+        }
+        if ($request->has("date")){
+            $listOfProduct->whereDate("created_at","==",$request->get("date"));
+        }
+
+
+//        dd($listOfProduct);
+        $listOfProduct->orderBy("created_at",'DESC');
+        $products = $listOfProduct->get();
         //
-        return view('layouts.dashboard-product-list',['listOfProduct'=>$products]);
+        return view('layouts.dashboard-product-list',['listOfProduct'=>$products])->with("jsAlert","321321312321");
     }
 
     /**
@@ -44,20 +59,23 @@ class ProductController extends Controller
         ]);
         if ($request->hasFile('product-upload-image')){
             $uploadedFile = $request->file('product-upload-image');
-            $uploadFilePath= $uploadedFile->storeAs('uploads', $uploadedFile->getClientOriginalName(), 'public');
+            $uploadFilePath= $uploadedFile->storeAs('uploads',
+                $uploadedFile->getClientOriginalName(), 'public');
+
             if ($uploadFilePath){
                 if ($validateResult){
+                    $fileToURL = '/storage/' . $uploadFilePath;
                     $product = new Product(
                         array('name'=>$request->input('name'),
                             'description'=>$request->input('description'),
-                            'pictureURL'=>'/storage/' . $uploadFilePath,
+                            'pictureURL'=>$fileToURL,
                             'price'=>$request->input('price')));
 
                     $insertReuslt =  $product->save();
 //                    $product->name = $request->name();
 //                    $product->description = $request->description();
 //                    $product->save();
-                    return redirect()->route('products.index')->with("result",$insertReuslt);
+                    return redirect()->route('products.index')->with("messages","Create product successful");
                 }
             }
         }
@@ -79,7 +97,7 @@ class ProductController extends Controller
     {
 
         $product = DB::table('products')->find($id);
-        return view('layouts.dashboard-product-edit',['productDetail'=>$product]);
+        return view('layouts.dashboard-product-view-detail',['productDetail'=>$product]);
     }
 
     /**
@@ -90,7 +108,8 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = DB::table('products')->find($id);
+        return view('layouts.dashboard-product-edit',['productDetail'=>$product]);
     }
 
     /**
@@ -102,9 +121,23 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $product =  Product::query();
         $productUpdatedInfo = $request->all(['name','description','price','pictureURL']);
+//        dd($productUpdatedInfo);
+        if ($request->hasFile('product-upload-image')) {
+            $uploadedFile = $request->file('product-upload-image');
+            $uploadFilePath = $uploadedFile->storeAs('uploads',
+                $uploadedFile->getClientOriginalName(), 'public');
+
+
+            if ($uploadFilePath) {
+                $fileToURL = '/storage/' . $uploadFilePath;
+                $productUpdatedInfo["pictureURL"] = $fileToURL;
+
+            }
+        }
         DB::table('products')->where('id','=',$id)->update($productUpdatedInfo);
-        return redirect()->route('products.index')->with("result",true);
+        return redirect()->route('products.index')->with("messages","Update Product ID:$id");
 //
 //                $product = new Product()-;
 //
@@ -125,9 +158,8 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $product = DB::table('products')->where('id','=',$id);
-        if ($product){
-            $product->delete();
-            return redirect()->route('products.index');
+        if ($product->delete()){
+            return redirect()->route('products.index')->with("messages","Delete Product ID:$id");
         }
     }
 }
