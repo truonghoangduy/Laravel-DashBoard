@@ -11,3 +11,4 @@ npm-debug.log
 yarn-error.log
 /routes/ProReq.png
 /routes/dockermysql.rtf
+/idea/*
