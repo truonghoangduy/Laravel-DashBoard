@@ -57,7 +57,8 @@
                 <!-- Im -->
                 <h6 class="heading-small text-muted mb-4">Product Image</h6>
                 <div class="pl-lg-4">
-                    <input type="file" name="product-upload-image">
+                    <img src="{{$productDetail->pictureURL}}" class="w-100">
+                    <input type="file" name="product-upload-image" href="{{$productDetail->pictureURL}}">
                 </div>
             </div>
         </form>

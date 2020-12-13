@@ -56,11 +56,16 @@
                 <hr class="my-4" />
                 <!-- Im -->
                 <h6 class="heading-small text-muted mb-4">Product Image</h6>
-                <div class="pl-lg-4">
-                    <input type="file" name="product-upload-image">
+                <div class="pl-lg-4 custom-file">
+                    <input type="file" name="product-upload-image" id="avatar" src="{{}}">
                 </div>
+
             </div>
         </form>
+
     </div>
 
+
 </div>
+
+
