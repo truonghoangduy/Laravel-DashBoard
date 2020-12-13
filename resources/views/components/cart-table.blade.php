@@ -6,15 +6,14 @@
                 <h3 class="mb-0">Cart</h3>
             </div>
             <!-- Light table -->
-            <div class="table-responsive">
+            <div class="table-responsive" data-toggle="list" data-list-values='["id", "user", "status", "order_date"]'>
                 <table class="table align-items-center table-flush">
                     <thead class="thead-light">
                     <tr>
-                        <th scope="col" class="sort" data-sort="name">id</th>
-
-                        <th scope="col" class="sort" data-sort="name">User</th>
+                        <th scope="col" class="sort" data-sort="id">Id</th>
+                        <th scope="col" class="sort" data-sort="user">User</th>
                         <th scope="col" class="sort" data-sort="status">Status</th>
-                        <th scope="col" class="sort" data-sort="completion">Order Date</th>
+                        <th scope="col" class="sort" data-sort="order_date">Order Date</th>
                         <th scope="col"></th>
                     </tr>
                     </thead>
@@ -44,8 +43,9 @@
                             </td>
                             <td>
                       <span class="badge badge-dot mr-4">
-                        <i class="bg-warning"></i>
-                        <span class="status">pending</span>
+{{--                          //['pending','shipping','received']--}}
+                        <i class="bg-{{$cart["cart_status"] === 'pending' ? "warning":($cart["cart_status"] === 'shipping' ? "info":"success")}}"></i>
+                        <span class="status">{{$cart["cart_status"]}}</span>
                       </span>
                             </td>
                             <td>
@@ -65,8 +65,11 @@
                                         <i class="fas fa-ellipsis-v"></i>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                        <a class="dropdown-item" href="{{route('carts.update',['cart'=>$cart['id']])}}">View Detail</a>
-                                        <a class="dropdown-item" href="{{route('carts.update',['cart'=>$cart['id']])}}">Edit</a>
+                                        <form method="GET" action="{{route('carts.show',['cart'=>$cart['id']])}}">
+                                            <button class="dropdown-item" type="submit">View Detail</button>
+                                        </form>
+{{--
+     <a class="dropdown-item" href="{{route('carts.show',['cart'=>$cart['id']])}}">View Detail</a>--}}
                                         <form method="POST" action="{{route('carts.destroy',['cart'=>$cart['id']])}}">
                                             @csrf
                                             @method('delete')
