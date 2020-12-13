@@ -10,9 +10,11 @@
                 <table class="table align-items-center table-flush">
                     <thead class="thead-light">
                     <tr>
+                        <th scope="col" class="sort" data-sort="name">ID</th>
+
                         <th scope="col" class="sort" data-sort="name">Name</th>
 
-                        <th scope="col" class="sort" data-sort="budget">Budget</th>
+                        <th scope="col" class="sort" data-sort="budget">Unit Price</th>
                         <th scope="col" class="sort" data-sort="status">Status</th>
                         <th scope="col" class="sort" data-sort="completion">Completion</th>
                         <th scope="col"></th>
@@ -25,6 +27,9 @@
 {{--                                                    Name - Picture--}}
 {{--                                                    Prices--}}
 {{--                                                    Status--}}
+                            <td class="budget">
+                                {{strval($product['id'])}}
+                            </td>
                             <th scope="row">
                                 <div class="media align-items-center">
 {{--                                    <a href="#" class="flex-row w mr-3">--}}
@@ -35,7 +40,7 @@
 {{--                                        @endif--}}
 {{--                                    </a>--}}
                                     <div class="media-body">
-                                        <span class="name mb-0 text-sm">{{$product['name']}}</span>
+                                        <span class="name mb-0 text-sm" data-toggle="popover-hover" data-img="{{$product['pictureURL']}}">{{$product['name']}}</span>
                                     </div>
                                 </div>
                             </th>
@@ -64,7 +69,8 @@
                                         <i class="fas fa-ellipsis-v"></i>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                        <a class="dropdown-item" href="{{route('products.update',['product'=>$product['id']])}}">Edit</a>
+                                        <a class="dropdown-item" href="{{route('products.show',['product'=>$product['id']])}}">View Detail</a>
+                                        <a class="dropdown-item" href="{{route('products.edit',['product'=>$product['id']])}}">Edit</a>
                                         <form method="POST" action="{{route('products.destroy',['product'=>$product['id']])}}">
                                             @csrf
                                             @method('delete')
