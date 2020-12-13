@@ -1,5 +1,6 @@
 <div class="header bg-primary pb-6">
     <div class="container-fluid">
+{{--        <img src="{{asset("/storage/uploads/TKB.png")}}">--}}
         <div class="header-body">
             <div class="row align-items-center py-4">
                 <div class="col-lg-6 col-7">
@@ -13,8 +14,19 @@
                     </nav>
                 </div>
                 <div class="col-lg-6 col-5 text-right">
-                    <a href='{{route('products.create')}}' class="btn btn-sm btn-neutral">New</a>
-                    <a href="#" class="btn btn-sm btn-neutral">Filters</a>
+                    @if (str_contains(\Illuminate\Support\Facades\URL::current(),"users"))
+                        <a href='{{route('users.create')}}' class="btn btn-sm btn-neutral">New</a>
+                    @elseif(str_contains(\Illuminate\Support\Facades\URL::current(),"products"))
+                        <a href='{{route('products.create')}}' class="btn btn-sm btn-neutral">New</a>
+                    @endif
+                    <button class="btn btn-sm btn-neutral" data-toggle="modal" data-target="#filterModal">Filters</button>
+                    <div class="modal fade" id="filterModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <x-table-filter></x-table-filter>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
