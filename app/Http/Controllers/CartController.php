@@ -14,11 +14,47 @@ class CartController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $listOfCart = Cart::all();
+        $cartQuery = Cart::query();
+//        if ($request->has("datebetween")){
+//            // [0] now     [1] to
+//            $dateBetwwen = explode("x",$request->get("datebetween"));
+//            $cartQuery->whereDate("created_at",">=",$dateBetwwen[0])->whereDate("created_at","<=",$dateBetwwen[1]);
+//        }
+//        $cartQuery->orderBy("created_at","desc");
+        $listOfCart = $cartQuery->get();
+
         return view("layouts.cart.dashboard-cart-list",["listOfCart"=>$listOfCart]);
         //
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function filter(Request $request){
+        $cartQuery = Cart::query();
+        if ($request->has("dateFrom") && $request->has("dateTo")){
+            if ($request->input("dateFrom") != null && $request->input("dateTo") != null ){
+                $dateForm = date("Y-m-d",strtotime($request->input("dateFrom")))." 00:00:00";
+                $dateTo = date("Y-m-d",strtotime($request->input("dateTo")))." 23:59:59";
+                $cartQuery->where("created_at",">=",$dateForm);
+                $cartQuery->where("created_at","<=",  $dateTo);
+            }
+
+        }
+//        if ($request->has("keyword")){
+//            $keyword = $request->input("keyword");
+//            $cartQuery->where("name","like",("%".$request->get("keyword")."%"));
+//        }
+        $cartQuery->orderBy("created_at","desc");
+        $listOfCart = $cartQuery->get();
+        $request->session()->put("filterOption",["dateFrom"=> $request->input("dateFrom"),"dateTo"=>$request->input("dateTo")]);
+        return view("layouts.cart.dashboard-cart-list",["listOfCart"=>$listOfCart]);
+//        return view("layouts.cart.dashboard-cart-list",["listOfCart"=>$listOfCart])->with("filteroption",
+//            ["dateFrom"=>$dateBetwwen[0],"dateTo"=>$dateBetwwen[1],"keyword"=>$keyword]);
     }
 
     /**
@@ -51,6 +87,7 @@ class CartController extends Controller
     public function show($id)
     {
         $cart = DB::table('carts')->find($id);
+
 
         $cartProductList = DB::table("product__carts")
             ->where('cart_id','=',$cart->id)->get()->toArray();
@@ -98,15 +135,16 @@ class CartController extends Controller
      */
     public function update(Request $request, $id)
     {
+//        dd($id);
         //
 //        dd([$request->input("productID"),$id]);
-        $product = DB::table('product__carts')->where('cart_id','=',$id)->where(
-            "product_id",'=',$request->input("productID")
-        );
-        if ($product->delete()){
+//        $product = DB::table('product__carts')->where('cart_id','=',$id)->where(
+//            "product_id",'=',$request->input("productID")
+//        );
+//        if ($product->delete()){
 
             return redirect()->route('carts.show',["cart"=>$id]);
-        }
+//        }
     }
 
     /**
@@ -118,7 +156,11 @@ class CartController extends Controller
      */
     public function destroy($id)
     {
-
+        $cart = DB::table('carts')->where('id','=',$id);
+        if ($cart){
+            $cart->delete();
+            return redirect()->route('carts.index');
+        }
 
         //
     }
