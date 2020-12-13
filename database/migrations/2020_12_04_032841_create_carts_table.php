@@ -17,6 +17,7 @@ class CreateCartsTable extends Migration
             $table->id();
             $table->timestamps();
             $table->integer("user_id");
+            $table->enum("cart_status",['pending','shipping','received']);
 //            $table->foreign("user_id")->on("id")->references("users");
         });
     }
