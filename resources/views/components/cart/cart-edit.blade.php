@@ -15,7 +15,17 @@
                 </div>
             </div>
             <div class="card-body">
-                <h6 class="heading-small text-muted mb-4">User information</h6>
+                <div class="flex-row mb-4 w-100 justify-content-lg-between">
+                    <h6 class="heading-small text-muted d-inline">User information</h6>
+                    <div class="dropdown dropdown-menu-right">
+                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                            <a class="dropdown-item" href="{{route('users.show',['user'=>$userDetail->id])}}">View User Info</a>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="pl-lg-4">
                     <div class="row">
@@ -49,11 +59,23 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label class="form-control-label" for="input-first-name">Role</label>
-                                <select class="form-control d-block w-50" id="role" name="role">
-                                    <option>Admin</option>
-                                    <option>Editor</option>
-                                    <option>Customer</option>
+                                <label class="form-control-label" for="input-last-name">Role</label>
+                                <input type="text" id="input-role" readonly class="form-control" placeholder="{{$userDetail->role}}" value="">
+{{--                                <label class="form-control-label" for="input-first-name">Role</label>--}}
+{{--                                <select class="form-control d-block w-50" id="role" name="role">--}}
+{{--                                    <option>Admin</option>--}}
+{{--                                    <option>Editor</option>--}}
+{{--                                    <option>Customer</option>--}}
+{{--                                </select>--}}
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-control-label" for="input-first-name">Cart Status</label>
+                                <select class="form-control d-block w-50" id="role" name="cart_status">
+                                    <option>Pending</option>
+                                    <option>Shipping</option>
+                                    <option>Received</option>
                                 </select>
                             </div>
                         </div>
@@ -64,7 +86,7 @@
     </form>
 
 
-    <div class="row">
+    <div class="row" style="visibility: {{$listOfProduct->isEmpty()?"hidden":"visible"}}">
         <div class="col">
             <div class="card">
                 <!-- Card header -->
@@ -87,10 +109,6 @@
                         <tbody class="list">
                         @foreach($listOfProduct as $product)
                             <tr>
-
-                                {{--                                                    Name - Picture--}}
-                                {{--                                                    Prices--}}
-                                {{--                                                    Status--}}
                                 <th scope="row">
                                     <div class="media align-items-center">
                                         {{--                                    <a href="#" class="flex-row w mr-3">--}}
@@ -101,7 +119,7 @@
                                         {{--                                        @endif--}}
                                         {{--                                    </a>--}}
                                         <div class="media-body">
-                                            <span class="name mb-0 text-sm">{{$product->name}}</span>
+                                            <h3 class="name mb-0 text-sm"  data-toggle="popover-hover" data-img="{{$product->pictureURL}}">{{$product->name}}</h3>
                                         </div>
                                     </div>
                                 </th>
@@ -117,7 +135,6 @@
                                 </td>
                                 <td>
                       <span class="font-weight-700">
-{{--                        <i class="fas fa-dollar-sign"></i>--}}
                         <span class="status">{{$product->quantity}}</span>
                       </span>
                                 </td>
@@ -138,9 +155,9 @@
                                             <a class="dropdown-item" href="{{route('products.update',['product'=>$product->product_id])}}">View Product Detail</a>
                                             <form method="POST" action="{{route('carts.update',["cart"=>$product->cart_id])}}">
                                                 @csrf
-                                                @method('put')
-                                                <input type="hidden" name="productID" value="{{$product->product_id}} ">
-                                                <button class="dropdown-item" type="submit">Remove</button>
+                                                @method('delete')
+                                                <input type="hidden" name="productID" value="{{$product->product_id}}">
+                                                <a class="dropdown-item" type="submit">Remove</a>
                                             </form>
                                         </div>
                                     </div>
@@ -182,6 +199,5 @@
 
 </div>
 </div>
-
 {{-- ListOfProduct Section--}}
 
