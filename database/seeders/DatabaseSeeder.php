@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
         User::factory(10)->create();
         Product::factory(20)->create();
         Cart::factory(4)->create();
-        Product_Cart::factory(4)->create();
+        Product_Cart::factory(10)->create();
 //        for ($x = 0; $x <= 3; $x++) {
 //            DB::table('products')->insert([
 //                'name' => Str::random(10),

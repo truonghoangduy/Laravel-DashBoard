@@ -22,8 +22,10 @@ class CartFactory extends Factory
      */
     public function definition()
     {
+        $arrCartStatus = ['pending','shipping','received'];
         return [
-            "user_id"=> User::all()->random()->id
+            "user_id"=> User::all()->random()->id,
+            "cart_status"=> $arrCartStatus[array_rand($arrCartStatus)]
 //            "product_id"
             //
         ];
