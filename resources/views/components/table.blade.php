@@ -15,8 +15,10 @@
                         <th scope="col" class="sort" data-sort="name">Name</th>
 
                         <th scope="col" class="sort" data-sort="budget">Unit Price</th>
-                        <th scope="col" class="sort" data-sort="status">Status</th>
-                        <th scope="col" class="sort" data-sort="completion">Completion</th>
+                        <th scope="col" class="sort" data-sort="budget">CREATE AT</th>
+
+                        {{--                        <th scope="col" class="sort" data-sort="status">Status</th>--}}
+{{--                        <th scope="col" class="sort" data-sort="completion">Completion</th>--}}
                         <th scope="col"></th>
                     </tr>
                     </thead>
@@ -45,24 +47,43 @@
                                 </div>
                             </th>
                             <td class="budget">
-                                {{strval($product['price'])}}
+
+                                <div class="d-flex align-items-center">
+                                        <span class="font-weight-700">
+                                         <i class="fas fa-dollar-sign"></i>
+                                          <span class="status">{{$product->price}}</span>
+                                 </span>
+                                </div>
+                                {{--                                    {{strval($product->price)}}--}}
                             </td>
-                            <td>
-                      <span class="badge badge-dot mr-4">
-                        <i class="bg-warning"></i>
-                        <span class="status">pending</span>
-                      </span>
-                            </td>
+
                             <td>
                                 <div class="d-flex align-items-center">
-                                    <span class="completion mr-2">60%</span>
-                                    <div>
-                                        <div class="progress">
-                                            <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
-                                        </div>
-                                    </div>
+                                    {{$product->created_at}}
+                                    {{--                                    <span class="completion mr-2">60%</span>--}}
+                                    {{--                                    <div>--}}
+                                    {{--                                        <div class="progress">--}}
+                                    {{--                                            <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>--}}
+                                    {{--                                        </div>--}}
+                                    {{--                                    </div>--}}
                                 </div>
                             </td>
+{{--                            <td>--}}
+{{--                      <span class="badge badge-dot mr-4">--}}
+{{--                        <i class="bg-warning"></i>--}}
+{{--                        <span class="status">pending</span>--}}
+{{--                      </span>--}}
+{{--                            </td>--}}
+{{--                            <td>--}}
+{{--                                <div class="d-flex align-items-center">--}}
+{{--                                    <span class="completion mr-2">60%</span>--}}
+{{--                                    <div>--}}
+{{--                                        <div class="progress">--}}
+{{--                                            <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </td>--}}
                             <td class="text-right">
                                 <div class="dropdown">
                                     <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

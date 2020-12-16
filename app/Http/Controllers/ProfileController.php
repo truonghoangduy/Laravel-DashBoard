@@ -43,8 +43,6 @@ class ProfileController extends Controller
             return redirect()->route('profiles.edit',['profile'=>$profileID]);
         }
         return back()->with('error',["messages"=>"User isn't has Profile Yet",'redirectLink'=>route("profiles.createWithUserID",["user"=>$userNotHasProfile->id])]);
-//        return view('layouts.profile.dashboard-profile-add',['userDetail'=>$userNotHasProfile]);
-        //
     }
 
     /**

@@ -24,7 +24,6 @@ class DatabaseSeeder extends Seeder
     {
         $roleArr = ["admin","editor","customer"];
 
-//        Role::factory(3)->create();
         for ($x = 0; $x < 3; $x++) {
             DB::table('roles')->insert([
                'name'=> $roleArr[$x],
@@ -32,25 +31,9 @@ class DatabaseSeeder extends Seeder
             ]);
         }
         User::factory(3)->create();
-        Profile::factory(2)->create();
         Product::factory(20)->create();
         Cart::factory(4)->create();
         Product_Cart::factory(10)->create();
-//        for ($x = 0; $x <= 3; $x++) {
-//            DB::table('products')->insert([
-//                'name' => Str::random(10),
-//                'description' => Str::random(10).'@gmail.com',
-//                'price' => rand(10,100),
-//            ]);
-//            DB::table('users')->insert([
-//                'name' => Str::random(10),
-//                'email' => Str::random(10).'@gmail.com',
-//                'password' => Str::random(10),
-//                'role'=>[User::ADMIN,User::EDITOR,User::CUSTOMER][array_rand([User::ADMIN,User::EDITOR,User::CUSTOMER])],
-//            ]);
-//
-//        }
-//         \App\Models\User::factory(10)->create();
     }
 }
 

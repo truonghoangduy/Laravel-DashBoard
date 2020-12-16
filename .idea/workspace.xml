@@ -23,35 +23,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="25a58600-2b7a-4619-87ee-437d8fdf7515" name="Default Changelist" comment="ProductsController resource CRUD with UI">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/ProfileController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Profile.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/dropzone.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/blog.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/blog.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/71a307b1-db00-43de-8313-4e5f8b98fe61.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/71a307b1-db00-43de-8313-4e5f8b98fe61/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b4d0d97c-e76c-43b1-b523-0ae6e854ec40.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b4d0d97c-e76c-43b1-b523-0ae6e854ec40.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/efa8d2d6-406d-43eb-9e47-b47e0f7a63bb.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/efa8d2d6-406d-43eb-9e47-b47e0f7a63bb/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/ConfirmPasswordController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/ConfirmPasswordController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/VerificationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/VerificationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CartController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CartController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProfileController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Cart.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Cart.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/CheckRole.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/CheckRole.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/View/Components/user/UserProfileAdd.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/View/Components/user/UserProfileAdd.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/UserFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/UserFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/CartFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/CartFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_04_032841_create_carts_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_04_032841_create_carts_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/ProductCartSeeder.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/bootstrap.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/cart/cart-edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/cart/cart-edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/product/product-edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/product/product-edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/product/product-view-detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/product/product-view-detail.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/profile-table.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/profile-table.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/table.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/table.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/dashboard.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/shared/breeadcrum.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/shared/breeadcrum.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/shared/topnav.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/shared/topnav.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpack.mix.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.mix.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -181,6 +180,8 @@
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/guzzle" />
       <path value="$PROJECT_DIR$/vendor/realrashid/sweet-alert" />
       <path value="$PROJECT_DIR$/vendor/laravel/ui" />
+      <path value="$PROJECT_DIR$/vendor/davejamesmiller/laravel-breadcrumbs" />
+      <path value="$PROJECT_DIR$/vendor/diglactic/laravel-breadcrumbs" />
     </include_path>
   </component>
   <component name="ProjectId" id="1kDh0dbZfF3w2rCsy0xc6yYHALr" />
@@ -248,49 +249,8 @@
       <workItem from="1607795511060" duration="3918000" />
       <workItem from="1607855902215" duration="18682000" />
       <workItem from="1607921351013" duration="16656000" />
-      <workItem from="1608040781154" duration="30291000" />
-    </task>
-    <task id="LOCAL-00013" summary="add Seeder Factory">
-      <created>1607061199039</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1607061199039</updated>
-    </task>
-    <task id="LOCAL-00014" summary="add Carts Route">
-      <created>1607061253968</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1607061253968</updated>
-    </task>
-    <task id="LOCAL-00015" summary="fix choosing wrong component">
-      <created>1607161643265</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1607161643265</updated>
-    </task>
-    <task id="LOCAL-00016" summary="add role for user table">
-      <created>1607161668597</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1607161668597</updated>
-    </task>
-    <task id="LOCAL-00017" summary="nothing change">
-      <created>1607161724097</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1607161724097</updated>
-    </task>
-    <task id="LOCAL-00018" summary="create product_carts table">
-      <created>1607161797657</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1607161797657</updated>
+      <workItem from="1608040781154" duration="36708000" />
+      <workItem from="1608126273346" duration="5479000" />
     </task>
     <task id="LOCAL-00019" summary="create carts table">
       <created>1607161805647</created>
@@ -593,7 +553,49 @@
       <option name="project" value="LOCAL" />
       <updated>1608102959636</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="Init Role">
+      <created>1608103021251</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1608103021251</updated>
+    </task>
+    <task id="LOCAL-00063" summary="Add User Role">
+      <created>1608103038038</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1608103038038</updated>
+    </task>
+    <task id="LOCAL-00064" summary="Init Profile Controller">
+      <created>1608103108366</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1608103108366</updated>
+    </task>
+    <task id="LOCAL-00065" summary="update Rooting">
+      <created>1608103154739</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1608103154739</updated>
+    </task>
+    <task id="LOCAL-00066" summary="install vue">
+      <created>1608103219616</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1608103219616</updated>
+    </task>
+    <task id="LOCAL-00067" summary="nothing change">
+      <created>1608103230860</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1608103230860</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -612,11 +614,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add popover img and sweetalert" />
-    <MESSAGE value="sweetalert provider" />
-    <MESSAGE value="add sweetalert" />
-    <MESSAGE value="add filter option" />
-    <MESSAGE value="install sweetalert" />
     <MESSAGE value="add ignore" />
     <MESSAGE value="add filter" />
     <MESSAGE value="update seeder" />
@@ -631,13 +628,18 @@
     <MESSAGE value="create add user ui" />
     <MESSAGE value="change app url" />
     <MESSAGE value="update cart model" />
-    <MESSAGE value="nothing change" />
     <MESSAGE value="update Cart Controller" />
     <MESSAGE value="Int Auth" />
     <MESSAGE value="Int Role &amp; Profile Model" />
     <MESSAGE value="Init Auth" />
     <MESSAGE value="UI update" />
-    <option name="LAST_COMMIT_MESSAGE" value="UI update" />
+    <MESSAGE value="Init Role" />
+    <MESSAGE value="Add User Role" />
+    <MESSAGE value="Init Profile Controller" />
+    <MESSAGE value="update Rooting" />
+    <MESSAGE value="install vue" />
+    <MESSAGE value="nothing change" />
+    <option name="LAST_COMMIT_MESSAGE" value="nothing change" />
   </component>
   <component name="WindowStateProjectService">
     <state x="448" y="204" key="#Inspections" timestamp="1605596067001">
@@ -696,10 +698,10 @@
       <screen x="0" y="23" width="1680" height="992" />
     </state>
     <state x="908" y="23" width="772" height="736" key="dock-window-1/0.23.1680.992@0.23.1680.992" timestamp="1607921797792" />
-    <state x="778" y="23" width="891" height="741" key="dock-window-2" timestamp="1608101916484">
+    <state x="778" y="23" width="891" height="741" key="dock-window-2" timestamp="1608126631267">
       <screen x="0" y="23" width="1680" height="992" />
     </state>
-    <state x="778" y="23" width="891" height="741" key="dock-window-2/0.23.1680.992@0.23.1680.992" timestamp="1608101916484" />
+    <state x="778" y="23" width="891" height="741" key="dock-window-2/0.23.1680.992@0.23.1680.992" timestamp="1608126631267" />
     <state width="600" height="428" key="javadoc.popup" timestamp="1608102804714">
       <screen x="0" y="23" width="1680" height="992" />
     </state>
@@ -708,17 +710,17 @@
       <screen x="0" y="23" width="1680" height="992" />
     </state>
     <state x="837" y="191" key="run.anything.popup/0.23.1680.992@0.23.1680.992" timestamp="1607157771264" />
-    <state x="473" y="242" width="670" height="676" key="search.everywhere.popup" timestamp="1608063405559">
+    <state x="473" y="242" width="670" height="676" key="search.everywhere.popup" timestamp="1608109053914">
       <screen x="0" y="23" width="1680" height="992" />
     </state>
-    <state x="473" y="242" width="670" height="676" key="search.everywhere.popup/0.23.1680.992@0.23.1680.992" timestamp="1608063405559" />
+    <state x="473" y="242" width="670" height="676" key="search.everywhere.popup/0.23.1680.992@0.23.1680.992" timestamp="1608109053914" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/components/profile-table.blade.php</url>
-          <line>49</line>
+          <line>53</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">

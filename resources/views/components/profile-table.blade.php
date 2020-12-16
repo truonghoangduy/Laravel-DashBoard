@@ -15,6 +15,7 @@
                 <table class="table align-items-center table-flush">
                     <thead class="thead-light">
                     <tr>
+                        <th scope="col" class="sort" data-sort="name">ID</th>
                         <th scope="col" class="sort" data-sort="name">Name</th>
                         <th scope="col" class="sort" data-sort="budget">Email</th>
                         <th scope="col" class="sort" data-sort="status">Role</th>
@@ -24,6 +25,9 @@
                     <tbody class="list">
                     @foreach($listOfUser as $user)
                         <tr>
+                            <td class="budget">
+                                {{strval($user['id'])}}
+                            </td>
                             <th scope="row">
                                 <div class="media align-items-center">
                                     {{--                                    <a href="#" class="flex-row w mr-3">--}}
@@ -43,7 +47,7 @@
                                 </div>
                             </th>
                             <td class="budget">
-                                {{ucfirst($user['email'])}}
+                                {{$user['email']}}
 {{--                                {{strval($user.email)}}--}}
                             </td>
                             <td>
@@ -57,11 +61,15 @@
                                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                         <a class="dropdown-item" href="{{route('users.edit',['user'=>$user['id']])}}">Edit</a>
                                         <a class="dropdown-item" href="{{route('profiles.check',['user'=>$user['id']])}}">View Profile</a>
-                                        <form method="POST">
-                                            @csrf
-                                            @method('delete')
-                                            <button class="dropdown-item" type="submit">Delete</button>
-                                        </form>
+                                        @if(auth()->user()->id == $user['id'])
+
+                                        @else
+                                            <form method="POST" action="{{route("users.destroy",["user"=>$user['id']])}}">
+                                                @csrf
+                                                @method('delete')
+                                                <button class="dropdown-item" type="submit">Delete</button>
+                                            </form>
+                                        @endif
                                     </div>
                                 </div>
                             </td>

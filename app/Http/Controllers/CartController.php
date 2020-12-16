@@ -28,7 +28,7 @@ class CartController extends Controller
 //        }
 //        $cartQuery->orderBy("created_at","desc");
         $listOfCart = $cartQuery->get();
-
+        session()->remove('filterOption');
         return view("layouts.cart.dashboard-cart-list",["listOfCart"=>$listOfCart]);
         //
     }
@@ -58,15 +58,12 @@ class CartController extends Controller
 //            $cartQuery->where("name","like",("%".$request->get("keyword")."%"));
 //        }
         $cartQuery->orderBy("created_at","desc");
-//        dd($cartQuery);
         $listOfCart = $cartQuery->get();
 
         $request->session()->put("filterOption",
             ["dateFrom"=> $request->input("dateFrom"),
                 "dateTo"=>$request->input("dateTo"),"selectedOption"=>$request->input('cart_status')]);
         return view("layouts.cart.dashboard-cart-list",["listOfCart"=>$listOfCart]);
-//        return view("layouts.cart.dashboard-cart-list",["listOfCart"=>$listOfCart])->with("filteroption",
-//            ["dateFrom"=>$dateBetwwen[0],"dateTo"=>$dateBetwwen[1],"keyword"=>$keyword]);
     }
 
     /**
@@ -131,10 +128,6 @@ class CartController extends Controller
      */
     public function update(Request $request, $id)
     {
-//        dd($id);
-        //
-
-//        dd($request->all('cart_status',));
         $cartInfo = $request->all(['cart_status']);
 
         $cart = Cart::query()->where('id','=',$id);
@@ -142,14 +135,6 @@ class CartController extends Controller
         if ($queryResult){
             return redirect()->route('carts.show',["cart"=>$id])->with('messages',"Update Cart ID:".$id);
         }
-//        $cart->update()
-//        dd([$request->input("productID"),$id]);
-//        $product = DB::table('product__carts')->where('cart_id','=',$id)->where(
-//            "product_id",'=',$request->input("productID")
-//        );
-//        if ($product->delete()){
-
-//        }
     }
 
     /**
@@ -166,7 +151,7 @@ class CartController extends Controller
         if ($cart){
             $cart->delete();
             $products_cart->delete();
-            return redirect()->route('carts.index');
+            return redirect()->route('carts.index')->with("messages","");
         }
 
         //

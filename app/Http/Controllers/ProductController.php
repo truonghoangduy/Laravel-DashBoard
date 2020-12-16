@@ -79,12 +79,6 @@ class ProductController extends Controller
                 }
             }
         }
-
-        //
-
-//        if ($request->hasFile('product-upload-image')){
-//            dd("TRUE");
-//        }
     }
 
     /**
@@ -138,14 +132,6 @@ class ProductController extends Controller
         }
         DB::table('products')->where('id','=',$id)->update($productUpdatedInfo);
         return redirect()->route('products.index')->with("messages","Update Product ID:$id");
-//
-//                $product = new Product()-;
-//
-//                $insertReuslt =  $product->save();
-//                    $product->name = $request->name();
-//                    $product->description = $request->description();
-//                    $product->save();
-//                return redirect()->route('products.index')->with("result",$insertReuslt);
         //
     }
 

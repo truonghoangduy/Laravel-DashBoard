@@ -16,7 +16,7 @@ class CreateCartsTable extends Migration
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->integer("user_id");
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->enum("cart_status",['pending','shipping','received']);
 //            $table->foreign("user_id")->on("id")->references("users");
         });

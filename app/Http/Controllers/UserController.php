@@ -98,6 +98,10 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
+        $user = User::query()->where("id",'=',$id)->first();
+        if ($user->delete()){
+            return redirect()->route("users.index")->with("messages","Remove user ID:".$id);
+        }
         //
     }
 }

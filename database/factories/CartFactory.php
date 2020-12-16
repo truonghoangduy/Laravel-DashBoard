@@ -26,8 +26,6 @@ class CartFactory extends Factory
         return [
             "user_id"=> User::all()->random()->id,
             "cart_status"=> $arrCartStatus[array_rand($arrCartStatus)]
-//            "product_id"
-            //
         ];
     }
 }

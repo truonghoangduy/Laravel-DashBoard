@@ -214,10 +214,18 @@
                         <div class="dropdown-header noti-title">
                             <h6 class="text-overflow m-0">Welcome!</h6>
                         </div>
-                        <a href="{{route("profiles.edit",["profile"=>auth()->user()->profile->id])}}" class="dropdown-item">
-                            <i class="ni ni-single-02"></i>
-                            <span>My profile</span>
-                        </a>
+                        @if(auth()->user()->profile != null)
+                            <a href="{{route("profiles.edit",["profile"=>auth()->user()->profile->id])}}" class="dropdown-item">
+                                <i class="ni ni-single-02"></i>
+                                <span>My profile</span>
+                            </a>
+                        @else
+                            <a href="{{route("profiles.check",["user"=>auth()->user()->id])}}" class="dropdown-item">
+                                <i class="ni ni-single-02"></i>
+                                <span>My profile</span>
+                            </a>
+                        @endif
+
                         <a href="#!" class="dropdown-item">
                             <i class="ni ni-settings-gear-65"></i>
                             <span>Settings</span>
