@@ -11,7 +11,7 @@
                     <thead class="thead-light">
                     <tr>
                         <th scope="col" class="sort" data-sort="id">Id</th>
-                        <th scope="col" class="sort" data-sort="user">User</th>
+                        <th scope="col" class="sort" data-sort="user">User ID</th>
                         <th scope="col" class="sort" data-sort="status">Status</th>
                         <th scope="col" class="sort" data-sort="order_date">Order Date</th>
                         <th scope="col"></th>
@@ -45,7 +45,7 @@
                       <span class="badge badge-dot mr-4">
 {{--                          //['pending','shipping','received']--}}
                         <i class="bg-{{$cart["cart_status"] === 'pending' ? "warning":($cart["cart_status"] === 'shipping' ? "info":"success")}}"></i>
-                        <span class="status">{{$cart["cart_status"]}}</span>
+                        <span class="status">{{ucfirst($cart["cart_status"])}}</span>
                       </span>
                             </td>
                             <td>

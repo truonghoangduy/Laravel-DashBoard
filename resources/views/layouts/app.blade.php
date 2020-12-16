@@ -8,7 +8,7 @@
     <title>Argon Dashboard - Free Dashboard for Bootstrap 4</title>
     <!-- Favicon -->
 {{--    <link rel="icon" href={{asset("assets/img/brand/favicon.png)}} type="image/png">--}}
-    <!-- Fonts -->
+<!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
     <!-- Icons -->
     <link rel="stylesheet" href= {{asset("assets/vendor/nucleo/css/nucleo.css")}} type="text/css">
@@ -16,13 +16,16 @@
     <!-- Page plugins -->
 {{--    <link rel="stylesheet" href={{asset("assets/vendor/sweetalert2/dist/sweetalert2.min.css")}}>--}}
 
-    <!-- Argon CSS -->
+<!-- Argon CSS -->
     <link rel="stylesheet" href={{asset("assets/css/argon.css?v=1.2.0" )}}type="text/css">
 
 </head>
 <body>
+@include('sweetalert::alert')
+
 {{--<div id="app">--}}
-    @yield('content')
+@yield('content')
+
 {{--</div>--}}
 <!-- Argon Scripts -->
 <!-- Core -->
@@ -34,11 +37,14 @@
 <!-- Optional JS -->
 <script src={{asset("assets/vendor/sweetalert2/dist/sweetalert2.min.js")}}></script>
 <script src={{asset("assets/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js")}}></script>
-<script src={{asset("assets/vendor/chart.js/dist/Chart.min.js")}}></script>
-<script src={{asset("assets/vendor/chart.js/dist/Chart.extension.js")}}></script>
+{{--<script src={{asset("assets/vendor/chartjs.js/dist/Chart.min.js")}}></script>--}}
+{{--<script src={{asset("assets/vendor/chart.js/dist/Chart.extension.js")}}></script>--}}
 <script src={{asset("assets/vendor/list.js/dist/list.min.js")}}></script>
 
-<script src={{asset("assets/vendor/dropzone/dist/min/dropzone.min.js")}}></script>
+{{--<script src={{asset("assets/vendor/dropzone/dist/dropzone.js")}}></script>--}}
+{{--<script src={{asset("assets/vendor/dropzone/dist/dropzone.css")}}></script>--}}
+{{--<script src={{asset("assets/js/dropzone.js")}}></script>--}}
+
 <!-- Argon JS -->
 <script src={{asset("assets/js/argon.js?v=1.2.0")}}></script>
 

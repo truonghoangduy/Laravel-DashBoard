@@ -34,7 +34,11 @@
                                     {{--                                        @endif--}}
                                     {{--                                    </a>--}}
                                     <div class="media-body">
-                                        <span class="name mb-0 text-sm">{{$user['name']}}</span>
+                                        @if($user->profile != null)
+                                            <span class="name mb-0 text-sm" data-toggle="popover-hover" data-img="{{$user->profile->pictureURL}}">{{$user['name']}}</span>
+                                        @else
+                                            <span class="name mb-0 text-sm" data-toggle="popover-hover" data-img="{{asset('assets/img/default-avatar.png')}}">{{$user['name']}}</span>
+                                        @endif
                                     </div>
                                 </div>
                             </th>
@@ -43,7 +47,7 @@
 {{--                                {{strval($user.email)}}--}}
                             </td>
                             <td>
-                                {{ucfirst($user['role'])}}
+                                {{ucfirst($user->role->name)}}
                             </td>
                             <td class="text-right">
                                 <div class="dropdown">
@@ -51,7 +55,8 @@
                                         <i class="fas fa-ellipsis-v"></i>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                        <a class="dropdown-item" href="{{route('users.show',['user'=>$user['id']])}}">Edit</a>
+                                        <a class="dropdown-item" href="{{route('users.edit',['user'=>$user['id']])}}">Edit</a>
+                                        <a class="dropdown-item" href="{{route('profiles.check',['user'=>$user['id']])}}">View Profile</a>
                                         <form method="POST">
                                             @csrf
                                             @method('delete')

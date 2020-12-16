@@ -46,8 +46,13 @@
                             <a href="#!" class="list-group-item list-group-item-action">
                                 <div class="row align-items-center">
                                     <div class="col-auto">
+                                        @if(auth()->user()->profile != null)
+                                            <img src="{{auth()->user()->profile->pictureURL}}" class="avatar rounded-circle">
+                                        @else
+                                            <img src="{{asset('assets/img/default-avatar.png')}}" class="avatar rounded-circle">
+                                        @endif
                                         <!-- Avatar -->
-                                        <img alt="Image placeholder" src="../assets/img/theme/team-1.jpg" class="avatar rounded-circle">
+{{--                                        <img alt="Image placeholder" src="../assets/img/theme/team-1.jpg" class="avatar rounded-circle">--}}
                                     </div>
                                     <div class="col ml--2">
                                         <div class="d-flex justify-content-between align-items-center">
@@ -194,10 +199,14 @@
                     <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div class="media align-items-center">
                   <span class="avatar avatar-sm rounded-circle">
-                    <img alt="Image placeholder" src="../assets/img/theme/team-4.jpg">
+                                        @if(auth()->user()->profile != null)
+                          <img src="{{auth()->user()->profile->pictureURL}}">
+                      @else
+                          <img src="{{asset('assets/img/default-avatar.png')}}">
+                      @endif
                   </span>
                             <div class="media-body  ml-2  d-none d-lg-block">
-                                <span class="mb-0 text-sm  font-weight-bold">John Snow</span>
+                                <span class="mb-0 text-sm  font-weight-bold">{{auth()->user()->name}}</span>
                             </div>
                         </div>
                     </a>
@@ -205,7 +214,7 @@
                         <div class="dropdown-header noti-title">
                             <h6 class="text-overflow m-0">Welcome!</h6>
                         </div>
-                        <a href="#!" class="dropdown-item">
+                        <a href="{{route("profiles.edit",["profile"=>auth()->user()->profile->id])}}" class="dropdown-item">
                             <i class="ni ni-single-02"></i>
                             <span>My profile</span>
                         </a>
@@ -221,11 +230,19 @@
                             <i class="ni ni-support-16"></i>
                             <span>Support</span>
                         </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#!" class="dropdown-item">
-                            <i class="ni ni-user-run"></i>
-                            <span>Logout</span>
-                        </a>
+{{--                        <div class="dropdown-divider"></div>--}}
+                        <form method="POST" action="{{ route('logout') }}" class="dropdown-item">
+
+                            @csrf
+                            @method("POST")
+                            <button type="submit" class="dropdown-item">
+                                Logout
+                                <i class="ni ni-user-run"></i>
+
+                            </button>
+
+                        </form>
+
                     </div>
                 </li>
             </ul>

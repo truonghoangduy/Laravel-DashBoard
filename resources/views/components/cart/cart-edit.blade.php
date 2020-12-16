@@ -1,12 +1,12 @@
 <div class="col-xl-12 order-xl-1">
-    <form method="POST" action="{{route('users.update',["user"=>$userDetail->id])}}">
+    <form method="POST" action="{{route('carts.update',["cart"=>$cartDetail->id])}}">
         @csrf
         @method("PUT")
         <div class="card">
             <div class="card-header">
                 <div class="row align-items-center">
                     <div class="col-9">
-                        <h3 class="mb-0">Cart Information</h3>
+                        <h3 class="mb-0">Cart ID: {{$cartDetail->id}} Information</h3>
                     </div>
                     <div class="col-3 text-right">
                         {{--                         <button type="button" class="btn btn-danger">Delete</button>--}}
@@ -60,7 +60,7 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label class="form-control-label" for="input-last-name">Role</label>
-                                <input type="text" id="input-role" readonly class="form-control" placeholder="{{$userDetail->role}}" value="">
+                                <input type="text" id="input-role" readonly class="form-control" placeholder=" {{ucfirst($userDetail->role->name)}}" value="">
 {{--                                <label class="form-control-label" for="input-first-name">Role</label>--}}
 {{--                                <select class="form-control d-block w-50" id="role" name="role">--}}
 {{--                                    <option>Admin</option>--}}
@@ -73,9 +73,14 @@
                             <div class="form-group">
                                 <label class="form-control-label" for="input-first-name">Cart Status</label>
                                 <select class="form-control d-block w-50" id="role" name="cart_status">
-                                    <option>Pending</option>
-                                    <option>Shipping</option>
-                                    <option>Received</option>
+                                    @foreach(['pending','shipping','received'] as $cart_status)
+                                        @if($cart_status == $cartDetail->cart_status)
+                                            <option value="{{$cart_status}}" selected>{{ucfirst($cart_status)}}</option>
+                                        @else
+                                            <option value="{{$cart_status}}">{{ucfirst($cart_status)}}</option>
+                                        @endif
+                                    @endforeach
+
                                 </select>
                             </div>
                         </div>
@@ -148,18 +153,23 @@
                                 </td>
                                 <td class="text-right">
                                     <div class="dropdown">
-                                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+{{--                                        <form method="GET" action="{{route('carts.removeproduct',['cart'=>$product->cart_id,'product'=>$product->product_id])}}" id="form-id-{{$product->product_id}}">--}}
+{{--                                            @csrf--}}
+                                            <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <i class="fas fa-ellipsis-v"></i>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                             <a class="dropdown-item" href="{{route('products.update',['product'=>$product->product_id])}}">View Product Detail</a>
-                                            <form method="POST" action="{{route('carts.update',["cart"=>$product->cart_id])}}">
-                                                @csrf
-                                                @method('delete')
-                                                <input type="hidden" name="productID" value="{{$product->product_id}}">
-                                                <a class="dropdown-item" type="submit">Remove</a>
-                                            </form>
+{{--                                            @php--}}
+{{--                                                dd($product)--}}
+{{--                                            @endphp--}}
+
+{{--                                                <input type="hidden" name="productID" value="{{$product->product_id}}">--}}
+                                                <a class="dropdown-item" id="{{'product-'.$product->product_id}}" href="{{route('carts.removeproduct',['cart'=>$product->cart_id,'product'=>$product->product_id])}}" type="submit">Remove</a>
+
                                         </div>
+{{--                                        </form>--}}
+
                                     </div>
                                 </td>
                             </tr>
@@ -197,7 +207,6 @@
         </div>
     </div>
 
-</div>
 </div>
 {{-- ListOfProduct Section--}}
 

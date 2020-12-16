@@ -1,7 +1,7 @@
 <form method="POST" action="{{route("carts.filter")}}">
     @csrf
     <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Filter</h5>
+        <h5 class="modal-title text-lg" id="exampleModalLabel">Filter Option</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
@@ -9,20 +9,25 @@
     <div class="modal-body">
         <div>
             <!-- Order your soul. Reduce your wants. - Augustine -->
-            <div class="form-group">
-                <label for="example-text-input" class="form-control-label float-left">Text</label>
-                <input name="keyword" class="form-control" type="text" id="example-text-input">
-            </div>
+{{--            <div class="form-group">--}}
+{{--                <label for="example-text-input" class="form-control-label float-left">Name</label>--}}
+{{--                <input name="keyword" class="form-control" type="text" id="example-text-input">--}}
+{{--            </div>--}}
             {{--    Role Select    --}}
 
             <div class="form-group">
-                <label for="exampleFormControlSelect1" class="form-control-label float-left">Example select</label>
-                <select name="option" class="form-control" id="option">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                <label for="exampleFormControlSelect1" class="form-control-label float-left">Cart Status</label>
+                <select class="form-control w-100" id="role" name="cart_status">
+                    @foreach(['pending','shipping','received'] as $key=>$cart_status)
+                        @if($filterOption['selectedOption'] == $cart_status)
+                            <option value="{{$cart_status}}" selected>{{ucfirst($cart_status)}}</option>
+                        @else
+                            <option value="{{$cart_status}}">{{ucfirst($cart_status)}}</option>
+
+                        @endif
+
+                    @endforeach
+
                 </select>
             </div>
 

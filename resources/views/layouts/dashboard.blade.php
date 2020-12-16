@@ -1,8 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('sweetalert::alert')
+    @if(session()->has('messages'))
+        @php
+            toast(session()->get("messages"),'success')->autoClose(1000);
 
+        @endphp
+    @endif
     @include('shared.sidebar')
     <div class="main-content" id="panel">
         @include('shared.topnav')
