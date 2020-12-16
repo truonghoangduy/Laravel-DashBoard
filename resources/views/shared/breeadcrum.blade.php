@@ -1,6 +1,5 @@
 <div class="header bg-primary pb-6">
     <div class="container-fluid">
-{{--        <img src="{{asset("/storage/uploads/TKB.png")}}">--}}
         <div class="header-body">
             <div class="row align-items-center py-4">
                 <div class="col-lg-6 col-7">
