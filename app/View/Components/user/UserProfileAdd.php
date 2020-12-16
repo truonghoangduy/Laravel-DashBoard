@@ -11,9 +11,11 @@ class UserProfileAdd extends Component
      *
      * @return void
      */
-    public function __construct()
+    public $userDetail;
+    public function __construct($userDetail)
     {
         //
+        $this->userDetail = $userDetail;
     }
 
     /**

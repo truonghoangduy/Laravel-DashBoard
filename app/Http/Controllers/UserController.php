@@ -15,8 +15,8 @@ class UserController extends Controller
      */
     public function index()
     {
-         $listOfUser = User::all()->toArray();
-         return view('layouts.dashboard-profile',['listOfUser'=>$listOfUser]);
+         $listOfUser = User::with('role')->get();
+         return view('layouts.profile.dashboard-profile',['listOfUser'=>$listOfUser]);
         //
     }
 
@@ -27,6 +27,7 @@ class UserController extends Controller
      */
     public function create()
     {
+        return view('layouts.profile.dashboard-profile-add');
         //
     }
 
@@ -39,6 +40,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
+
     }
 
     /**
@@ -49,8 +51,12 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = DB::table('users')->find($id);
-        return view('layouts.dashboard-profile-edit',['userDetail'=>$user]);
+//        $user = User::with('profile')->where('id','=',$id)->first();
+//        if ($user->profile == null){
+//            return back()->with('error',["messages"=>"User isn't has Profile Yet",'redirectLink'=>route("profiles.createWithUser",["user"=>$id])]);
+//        }
+//        return redirect()->route('profiles.edit',['profile'=>$user->profile->id]);
+//        return view('layouts.profile.dashboard-profile-edit',['userDetail'=>$user]);
     }
 
     /**
@@ -62,6 +68,8 @@ class UserController extends Controller
     public function edit($id)
     {
         //
+        $user = User::query()->firstWhere('id','=',$id);
+        return view('layouts.user.dashboard-user-edit',['userDetail'=>$user]);
     }
 
     /**
@@ -73,7 +81,9 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $productUpdatedInfo = $request->all(['name','email','role']);
+        $productUpdatedInfo = $request->all(['name','email','role_id']);
+//        dd($productUpdatedInfo);
+
 //        dd($productUpdatedInfo);
         DB::table('users')->where('id','=',$id)->update($productUpdatedInfo);
         return redirect()->route('users.index')->with("result",true);
