@@ -171,10 +171,37 @@
                                 </td>
                             </tr>
                         @endforeach
+                            <tr>
+                                <td class="name text-lg font-weight-bold">Total</td>
+                                <td></td>
+                                <td></td>
+
+                                <td class="budget">
+
+                                    <div class="d-flex align-items-center">
+                                        <span class="font-weight-700">
+                                         <i class="fas fa-dollar-sign"></i>
+                                          <span class="status">                                        {{array_reduce($listOfProduct->toArray(),function ($carry,$x){
+if ($carry != null){
+return $carry + ($x->quantity * $x->price);
+}
+return ($x->quantity * $x->price);
+})}}</span>
+                                 </span>
+                                    </div>
+                                    {{--                                    {{strval($product->price)}}--}}
+                                </td>
+                                <td></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
+            <script>
+                function calculateTotalCartPrice(listOfproduct){
+                    return  listOfproduct.reduce((x1,x2)=>(x1.quantity*x1.price)+(x2.quantity*x2.price));
+                }
+            </script>
         </div>
     </div>
 

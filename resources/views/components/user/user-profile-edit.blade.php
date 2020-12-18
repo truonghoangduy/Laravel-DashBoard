@@ -11,7 +11,7 @@
                         <div class="col-lg-3 order-lg-2">
                             <div class="card-profile-image">
                                 <a href="#">
-                                    @if($userDetail->profile != null)
+                                    @if($userDetail->profile != null && $userDetail->profile->pictureURL !=null )
                                         <img src="{{$userDetail->profile->pictureURL}}" class="rounded-circle">
                                     @else
                                         <img src="{{asset('assets/img/default-avatar.png')}}" class="rounded-circle">

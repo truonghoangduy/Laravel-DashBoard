@@ -35,7 +35,7 @@
 <script src={{asset("assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js")}}></script>
 <script src={{asset("assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js")}}></script>
 <!-- Optional JS -->
-<script src={{asset("assets/vendor/sweetalert2/dist/sweetalert2.min.js")}}></script>
+{{--<script src={{asset("assets/vendor/sweetalert2/dist/sweetalert2.min.js")}}></script>--}}
 <script src={{asset("assets/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js")}}></script>
 {{--<script src={{asset("assets/vendor/chartjs.js/dist/Chart.min.js")}}></script>--}}
 {{--<script src={{asset("assets/vendor/chart.js/dist/Chart.extension.js")}}></script>--}}

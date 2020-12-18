@@ -6,8 +6,10 @@ use App\Models\Cart;
 use App\Models\Product;
 use App\Models\Product_Cart;
 use App\Models\User;
+use App\View\Components\Alert;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+
 
 class CartController extends Controller
 {
@@ -63,6 +65,8 @@ class CartController extends Controller
         $request->session()->put("filterOption",
             ["dateFrom"=> $request->input("dateFrom"),
                 "dateTo"=>$request->input("dateTo"),"selectedOption"=>$request->input('cart_status')]);
+
+        \RealRashid\SweetAlert\Facades\Alert::success('Successful', 'Applied Filter');
         return view("layouts.cart.dashboard-cart-list",["listOfCart"=>$listOfCart]);
     }
 

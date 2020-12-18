@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 @section('main-content')
-    @if(session('result'))
+    @if(session('messages'))
         @once
             @push('scripts')
                 <script>

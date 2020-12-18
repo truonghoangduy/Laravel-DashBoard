@@ -26,8 +26,12 @@
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label class="form-control-label" for="input-email">Email address</label>
-                                <input readonly type="email" id="input-email" class="form-control" placeholder="jesse@example.com">
+                                <label class="form-control-label" for="input-email">Category</label>
+                                <select class="form-control d-block w-50" id="role" name="category">
+                                    <option value="1">Electronic</option>
+                                    <option value="2">Appliance</option>
+                                    <option value="3">HouseChore</option>
+                                </select>
                             </div>
                         </div>
                     </div>
