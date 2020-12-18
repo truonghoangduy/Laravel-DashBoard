@@ -22,11 +22,13 @@ class ProductFactory extends Factory
      */
     public function definition()
     {
-
+        $category = ['electronic','household','wearable'];
         return [
             "name" => $this->faker->name,
             "description" => $this->faker->name,
             "price" => $this->faker->numberBetween(10,100),
+            "quantity"=> $this->faker->numberBetween(30,100),
+            "category"=>$category[array_rand($category)],
             "pictureURL"=> asset('assets/img/theme/angular.jpg')
             //
         ];

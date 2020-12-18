@@ -16,6 +16,10 @@
 
                         <th scope="col" class="sort" data-sort="budget">Unit Price</th>
                         <th scope="col" class="sort" data-sort="budget">CREATE AT</th>
+                        <th scope="col" class="sort" data-sort="budget">Quantity</th>
+                        <th scope="col" class="sort" data-sort="budget">Category</th>
+
+
 
                         {{--                        <th scope="col" class="sort" data-sort="status">Status</th>--}}
 {{--                        <th scope="col" class="sort" data-sort="completion">Completion</th>--}}
@@ -60,12 +64,20 @@
                             <td>
                                 <div class="d-flex align-items-center">
                                     {{$product->created_at}}
-                                    {{--                                    <span class="completion mr-2">60%</span>--}}
-                                    {{--                                    <div>--}}
-                                    {{--                                        <div class="progress">--}}
-                                    {{--                                            <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>--}}
-                                    {{--                                        </div>--}}
-                                    {{--                                    </div>--}}
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <span class="font-weight-800">
+                                       {{$product->quantity}}
+                                    </span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <span class="font-weight-300">
+                                       {{ucfirst( $product->category)}}
+                                    </span>
                                 </div>
                             </td>
 {{--                            <td>--}}

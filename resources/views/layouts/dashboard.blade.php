@@ -15,6 +15,20 @@
         @endphp
     @endif
 
+    @if(session()->has('format_error'))
+        @php
+            $errorData = session()->get("error");
+            alert()->error('ErrorAlert',$errorData['messages'])->persistent(true);
+        @endphp
+    @endif
+
+{{--    @if(session()->has('role_error'))--}}
+{{--        @php--}}
+{{--            $errorData = session()->get("error");--}}
+{{--            alert()->error('ErrorAlert',$errorData['messages'])->persistent(true);--}}
+{{--        @endphp--}}
+{{--    @endif--}}
+
     @include('shared.sidebar')
     <div class="main-content" id="panel">
         @include('shared.topnav')

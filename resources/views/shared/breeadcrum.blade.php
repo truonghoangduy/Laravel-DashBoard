@@ -14,12 +14,16 @@
                     </nav>
                 </div>
                 <div class="col-lg-6 col-5 text-right">
-                    @if (str_contains(\Illuminate\Support\Facades\URL::current(),"users"))
+                    @if (str_contains(\Illuminate\Support\Facades\URL::current(),"213123"))
                         <a href='{{route('users.create')}}' class="btn btn-sm btn-neutral">New</a>
                     @elseif(str_contains(\Illuminate\Support\Facades\URL::current(),"products"))
                         <a href='{{route('products.create')}}' class="btn btn-sm btn-neutral">New</a>
                     @endif
-                    <button class="btn btn-sm btn-neutral" data-toggle="modal" data-target="#filterModal">Filters</button>
+                    @if(str_contains(\Illuminate\Support\Facades\URL::current(),"carts"))
+                            <button class="btn btn-sm btn-neutral" data-toggle="modal" data-target="#filterModal">Filters</button>
+                        @else
+
+                        @endif
                     <div class="modal fade" id="filterModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">

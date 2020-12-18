@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use App\Models\User;
+use RealRashid\SweetAlert\Facades\Alert;
 
 
 class CheckRole
@@ -32,7 +33,9 @@ class CheckRole
                 }
 
             }
-            return redirect("home")->with('error',"Permission error you can't perform this action");
+            \RealRashid\SweetAlert\Facades\Alert::error('Permission denied', "You can't perform this action");
+            return redirect()->back();
+//            return redirect("home")->with('error',"Permission denied you can't perform this action");
         }
     }
 }

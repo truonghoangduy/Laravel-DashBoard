@@ -46,7 +46,7 @@
                             <a href="#!" class="list-group-item list-group-item-action">
                                 <div class="row align-items-center">
                                     <div class="col-auto">
-                                        @if(auth()->user()->profile != null)
+                                        @if(auth()->user()->profile != null && auth()->user()->profile->pictureURL != null)
                                             <img src="{{auth()->user()->profile->pictureURL}}" class="avatar rounded-circle">
                                         @else
                                             <img src="{{asset('assets/img/default-avatar.png')}}" class="avatar rounded-circle">
@@ -199,7 +199,7 @@
                     <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div class="media align-items-center">
                   <span class="avatar avatar-sm rounded-circle">
-                                        @if(auth()->user()->profile != null)
+                                        @if(auth()->user()->profile != null && auth()->user()->profile->pictureURL != null)
                           <img src="{{auth()->user()->profile->pictureURL}}">
                       @else
                           <img src="{{asset('assets/img/default-avatar.png')}}">

@@ -21,14 +21,8 @@ class CartController extends Controller
     public function index(Request $request)
     {
         $cartQuery = Cart::query();
-        $cartQuery->orderBy("created_at","desc");
+        $cartQuery->orderBy("id","asc");
 
-//        if ($request->has("datebetween")){
-//            // [0] now     [1] to
-//            $dateBetwwen = explode("x",$request->get("datebetween"));
-//            $cartQuery->whereDate("created_at",">=",$dateBetwwen[0])->whereDate("created_at","<=",$dateBetwwen[1]);
-//        }
-//        $cartQuery->orderBy("created_at","desc");
         $listOfCart = $cartQuery->get();
         session()->remove('filterOption');
         return view("layouts.cart.dashboard-cart-list",["listOfCart"=>$listOfCart]);
@@ -53,12 +47,17 @@ class CartController extends Controller
         }
 
         if ($request->has("cart_status")){
-            $cartQuery->where('cart_status','=',$request->input('cart_status'));
+            if ($request->input('cart_status') != "none"){
+                $cartQuery->where('cart_status','=',$request->input('cart_status'));
+            }
         }
-//        if ($request->has("keyword")){
-//            $keyword = $request->input("keyword");
-//            $cartQuery->where("name","like",("%".$request->get("keyword")."%"));
-//        }
+        if ($request->has("keyword")){
+            $keyword = $request->input("keyword");
+            if ($keyword != null){
+                $cartQuery->where("id","=",$keyword);
+
+            }
+        }
         $cartQuery->orderBy("created_at","desc");
         $listOfCart = $cartQuery->get();
 
@@ -99,12 +98,13 @@ class CartController extends Controller
      */
     public function show($id)
     {
-        $cart = Cart::query()->where('id','=',$id)->first();
-//        dd($cart->product_cart[0]->product);
-
+        $cart = Cart::where('id','=',$id)->first();
+//        dd($cart);
         $listOfProduct = DB::table("product__carts")
             ->join("products","products.id","=","product__carts.product_id")
             ->where("product__carts.cart_id",'=',$cart->id)->get();
+
+//        dd($listOfProduct);
         $cartUserDetail = User::with('role')->find($cart->user_id);
         $cartDetail = ["cart"=>$cart,"userDetail"=>$cartUserDetail,'listOfProduct'=>$listOfProduct];
         return view("layouts.cart.dashboard-cart-edit",["cartDetail"=>$cartDetail]);
@@ -155,7 +155,7 @@ class CartController extends Controller
         if ($cart){
             $cart->delete();
             $products_cart->delete();
-            return redirect()->route('carts.index')->with("messages","");
+            return redirect()->route('carts.index')->with("messages","Remove cart ID:".$id);
         }
 
         //

@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Cart;
 use App\Models\User;
+use Faker\Provider\DateTime;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CartFactory extends Factory
@@ -25,7 +26,8 @@ class CartFactory extends Factory
         $arrCartStatus = ['pending','shipping','received'];
         return [
             "user_id"=> User::all()->random()->id,
-            "cart_status"=> $arrCartStatus[array_rand($arrCartStatus)]
+            "cart_status"=> $arrCartStatus[array_rand($arrCartStatus)],
+            "created_at"=> $this->faker->dateTimeBetween("-10 days",'now')
         ];
     }
 }

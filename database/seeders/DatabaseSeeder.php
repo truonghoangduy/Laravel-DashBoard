@@ -32,8 +32,8 @@ class DatabaseSeeder extends Seeder
         }
         User::factory(3)->create();
         Product::factory(20)->create();
-        Cart::factory(4)->create();
-        Product_Cart::factory(10)->create();
+        Cart::factory(10)->create();
+        Product_Cart::factory(20)->create();
     }
 }
 

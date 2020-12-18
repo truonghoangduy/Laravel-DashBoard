@@ -23,11 +23,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/test',function (){
-    $fakeData = array(['a','b']);
-    return view('layouts.dashboard',['listOfProduct'=>$fakeData]);
-});
-
 //Route::resource('upload',\App\Http\Controllers\Upload::class);
 
 Route::resource('products',ProductController::class)

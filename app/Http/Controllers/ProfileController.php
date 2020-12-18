@@ -118,9 +118,7 @@ class ProfileController extends Controller
             unset($profileInfo['pictureURL']);
         }
         $result = Profile::query()->where('id','=',$id)->where('user_id','=',$profileInfo['user_id'])->update($profileInfo);
-//        dd([$result,$profileInfo]);
         if ($result){
-//            dd(User::query()->with('profile')->where("id",'=',$profileInfo['user_id'])->get());
             return redirect()->route("profiles.edit",["profile"=>$id])->with('messages',"Update User ID:".$id);
         }
         //
@@ -129,9 +127,13 @@ class ProfileController extends Controller
     private function writeProfileImgToDisk($request){
         // return written URL
         if ($request->hasFile('profile-upload-image')){
+
+
             $uploadedFile = $request->file('profile-upload-image');
+            $unique_name = md5($uploadedFile->getClientOriginalName(). time());
+
             $uploadFilePath= $uploadedFile->storeAs('uploads/profiles',
-                $uploadedFile->getClientOriginalName(), 'public');
+                $unique_name, 'public');
 
             if ($uploadFilePath){
                 $fileToURL = '/storage/' . $uploadFilePath;

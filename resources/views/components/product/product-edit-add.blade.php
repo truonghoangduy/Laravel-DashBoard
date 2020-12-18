@@ -20,7 +20,7 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label class="form-control-label" for="input-username"></label>
+                                <label class="form-control-label" for="input-username">Product name</label>
                                 <input type="text" name="name" id="input-username" class="form-control" placeholder="Username" value="lucky.jesse">
                             </div>
                         </div>
@@ -28,9 +28,9 @@
                             <div class="form-group">
                                 <label class="form-control-label" for="input-email">Category</label>
                                 <select class="form-control d-block w-50" id="role" name="category">
-                                    <option value="1">Electronic</option>
-                                    <option value="2">Appliance</option>
-                                    <option value="3">HouseChore</option>
+                                    @foreach(['electronic','household','wearable'] as $name)
+                                        <option value="{{$name}}">{{$name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -44,6 +44,12 @@
                                     <span class="input-group-text">$</span>
                                     <span class="input-group-text">0.00</span>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-control-label" for="input-quantity">Quantity</label>
+                                <input type="text" name="quantity" id="input-quantity" class="form-control w-50" value="">
                             </div>
                         </div>
                     </div>

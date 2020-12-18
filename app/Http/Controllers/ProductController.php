@@ -55,27 +55,42 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $validateResult =  $request->validate([
-            'product-upload-image'=> 'nullable|mimes:jpg,jpeg,png,xlx,xls,pdf|max:2048'
+            'name'=>'required',
+            'price'=>'required',
+            'product-upload-image'=> 'required|mimes:jpg,jpeg,png,xlx,xls,pdf|max:2048'
         ]);
+
+
+//        dd($request->input('quantity'));
+
         if ($request->hasFile('product-upload-image')){
             $uploadedFile = $request->file('product-upload-image');
+            $unique_name = md5($uploadedFile->getClientOriginalName(). time());
+
             $uploadFilePath= $uploadedFile->storeAs('uploads',
-                $uploadedFile->getClientOriginalName(), 'public');
+                $unique_name, 'public');
 
             if ($uploadFilePath){
                 if ($validateResult){
-                    $fileToURL = '/storage/' . $uploadFilePath;
-                    $product = new Product(
-                        array('name'=>$request->input('name'),
-                            'description'=>$request->input('description'),
-                            'pictureURL'=>$fileToURL,
-                            'price'=>$request->input('price')));
+                    try {
+                        $fileToURL = '/storage/' . $uploadFilePath;
+                        $product = new Product(
+                            array('name'=>$request->input('name'),
+                                'description'=>$request->input('description'),
+                                'pictureURL'=>$fileToURL,
+                                'category'=>$request->input('category'),
+                                'quantity'=>$request->input('quantity'),
+                                'price'=>$request->input('price')));
 
-                    $insertReuslt =  $product->save();
+                        $insertReuslt =  $product->save();
 //                    $product->name = $request->name();
 //                    $product->description = $request->description();
 //                    $product->save();
-                    return redirect()->route('products.index')->with("messages","Create product successful");
+                        return redirect()->route('products.index')->with("messages","Create product successful");
+                    }catch (\Exception $e){
+                        return redirect()->back()->with('format_error',['messages'=>"Check your format"]);
+                    }
+
                 }
             }
         }
@@ -115,15 +130,21 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $product =  Product::query();
-        $productUpdatedInfo = $request->all(['name','description','price','pictureURL']);
+
+        $validateResult =  $request->validate([
+            'name'=>'required',
+            'price'=>'required',
+            'quantity'=>'required',
+            'product-upload-image'=> 'required|mimes:jpg,jpeg,png,xlx,xls,pdf|max:2048'
+        ]);
+
+        $productUpdatedInfo = $request->all(['name','description','price','pictureURL','quantity','category']);
 //        dd($productUpdatedInfo);
         if ($request->hasFile('product-upload-image')) {
             $uploadedFile = $request->file('product-upload-image');
+            $unique_name = md5($uploadedFile->getClientOriginalName(). time());
             $uploadFilePath = $uploadedFile->storeAs('uploads',
-                $uploadedFile->getClientOriginalName(), 'public');
-
-
+                $unique_name, 'public');
             if ($uploadFilePath) {
                 $fileToURL = '/storage/' . $uploadFilePath;
                 $productUpdatedInfo["pictureURL"] = $fileToURL;

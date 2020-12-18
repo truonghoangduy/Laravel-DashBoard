@@ -9,16 +9,16 @@
     <div class="modal-body">
         <div>
             <!-- Order your soul. Reduce your wants. - Augustine -->
-{{--            <div class="form-group">--}}
-{{--                <label for="example-text-input" class="form-control-label float-left">Name</label>--}}
-{{--                <input name="keyword" class="form-control" type="text" id="example-text-input">--}}
-{{--            </div>--}}
+            <div class="form-group">
+                <label for="example-text-input" class="form-control-label float-left">ID</label>
+                <input name="keyword" class="form-control" type="text" id="example-text-input">
+            </div>
             {{--    Role Select    --}}
 
             <div class="form-group">
                 <label for="exampleFormControlSelect1" class="form-control-label float-left">Cart Status</label>
                 <select class="form-control w-100" id="role" name="cart_status">
-                    @foreach(['pending','shipping','received'] as $key=>$cart_status)
+                    @foreach(['pending','shipping','received','none'] as $key=>$cart_status)
                         @if($filterOption['selectedOption'] == $cart_status)
                             <option value="{{$cart_status}}" selected>{{ucfirst($cart_status)}}</option>
                         @else

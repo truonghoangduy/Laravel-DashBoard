@@ -179,9 +179,9 @@
                                 <td class="budget">
 
                                     <div class="d-flex align-items-center">
-                                        <span class="font-weight-700">
+                                        <span class="font-weight-bold text-lg">
                                          <i class="fas fa-dollar-sign"></i>
-                                          <span class="status">                                        {{array_reduce($listOfProduct->toArray(),function ($carry,$x){
+                                          <span class="status">{{array_reduce($listOfProduct->toArray(),function ($carry,$x){
 if ($carry != null){
 return $carry + ($x->quantity * $x->price);
 }

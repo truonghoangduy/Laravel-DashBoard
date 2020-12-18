@@ -50,6 +50,11 @@ class User extends Authenticatable
         return $this->hasOne('App\Models\Profile');
     }
 
+
+    public function cart(){
+        return $this->hasMany('App\Models\Cart','user_id');
+    }
+
     public function hasRole($role){
 //        dd($this->role()->get('name')->first()->name );
 //        dd($this->role()->get('name') == $role);
