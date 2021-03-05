@@ -23,7 +23,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="25a58600-2b7a-4619-87ee-437d8fdf7515" name="Default Changelist" comment="ProductsController resource CRUD with UI">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b4d0d97c-e76c-43b1-b523-0ae6e854ec40.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b4d0d97c-e76c-43b1-b523-0ae6e854ec40.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -168,6 +168,7 @@
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="database.data.extractors.current.export.id" value="JSON-Groovy.json.groovy" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -227,7 +228,9 @@
       <workItem from="1608126273346" duration="15191000" />
       <workItem from="1608258390062" duration="10807000" />
       <workItem from="1608662002420" duration="312000" />
-      <workItem from="1608685203699" duration="1363000" />
+      <workItem from="1608685203699" duration="4643000" />
+      <workItem from="1610358045754" duration="32000" />
+      <workItem from="1610358655978" duration="621000" />
     </task>
     <task id="LOCAL-00023" summary="Create Cart Edit Component took params from Controller">
       <created>1607161984543</created>
@@ -703,10 +706,10 @@
       <screen x="0" y="23" width="1680" height="992" />
     </state>
     <state x="837" y="191" key="run.anything.popup/0.23.1680.992@0.23.1680.992" timestamp="1607157771264" />
-    <state x="473" y="242" width="670" height="676" key="search.everywhere.popup" timestamp="1608109053914">
+    <state x="473" y="242" width="670" height="58" key="search.everywhere.popup" timestamp="1608687580853">
       <screen x="0" y="23" width="1680" height="992" />
     </state>
-    <state x="473" y="242" width="670" height="676" key="search.everywhere.popup/0.23.1680.992@0.23.1680.992" timestamp="1608109053914" />
+    <state x="473" y="242" width="670" height="58" key="search.everywhere.popup/0.23.1680.992@0.23.1680.992" timestamp="1608687580853" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
